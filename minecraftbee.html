@@ -155,7 +155,7 @@ https://devcode.la/tutoriales/unidades-vh-vw-css/
 <script>
   
   
-  var degrees=0;
+  var degrees=72;
   var radians;
   var newHeight;
   var newOffset ;
@@ -167,17 +167,18 @@ https://devcode.la/tutoriales/unidades-vh-vw-css/
  
 setInterval(animation, 50);
 function animation(){
-  console.log(degrees);
   parentWidth=document.getElementById('wingsparent').offsetWidth;
-  degrees=degrees+24;
+  
   if (mode){
   bounce=bounce+1;
+  degrees=degrees-24;
+  console.log(degrees)
   if (bounce>2){
     mode=false;
   }
   }else{
   bounce=bounce-1;
-  
+  degrees=degrees+24;
   if (bounce<0){
     mode=true;
   }
