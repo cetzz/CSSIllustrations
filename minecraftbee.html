@@ -155,43 +155,35 @@ https://levelup.gitconnected.com/use-javascript-to-make-an-element-follow-the-cu
 
 <script>
   
-  parentWidth=document.getElementById('wingsparent').offsetWidth;
   
   var degrees=0;
   var radians;
   var newHeight;
   var newOffset ;
-  var parentHeight=0; 
-
-  
+  var parentHeight;
+  var parentWidth;
+  let bee = document.getElementById('content');
+ 
 setInterval(animation, 50);
-
 function animation(){
   console.log(degrees);
-    parentWidth=document.getElementById('wingsparent').offsetWidth;
-  if (degrees==90){
-    degrees = 0;
-  }
-   degrees=degrees+20;
-   radians= degrees*Math.PI/180;
-   newHeight = parentWidth*Math.tan(radians);
-   newOffset = newHeight / 2;
-   parentHeight = parentHeight - newHeight;
+  parentWidth=document.getElementById('wingsparent').offsetWidth;
+  degrees=degrees+20;
+  radians= degrees*Math.PI/180;
+  newHeight = parentWidth*Math.tan(radians);
+  newOffset = newHeight / 2;
+  parentHeight = parentHeight - newHeight;
   document.getElementById('leftwing').style.transform= 'skew('+degrees+'deg)';
   
   document.getElementById('rightwing').style.transform= 'skew(-'+degrees+'deg)';
 }
-let bee = document.getElementById('content');
 offsetW=bee.offsetWidth/2;
 offsetH=bee.offsetHeight/2;
-
 const onMove = (e) =>{
   bee.style.left = (e.pageX-offsetW) + 'px';
   bee.style.top = (e.pageY-offsetH) + 'px';
 }
-
 document.addEventListener('mousemove', onMove);
-
 document.addEventListener('touchstart', onMove);
 document.addEventListener('touchmove', onMove);
 
