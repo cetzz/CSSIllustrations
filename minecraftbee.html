@@ -180,8 +180,8 @@ function animation(){
 offsetW=bee.offsetWidth/2;
 offsetH=bee.offsetHeight/2;
 const onMove = (e) =>{
-  bee.style.left = (e.pageX-offsetW) + 'px';
-  bee.style.top = (e.pageY-offsetH) + 'px';
+  bee.style.left = (e.touches ?  e.touches[0].pageX -offsetW : e.pageX -offsetW) + 'px';
+  bee.style.top = (e.touches ?  e.touches[0].pageY -offsetH: e.pageY-offsetH) + 'px';
 }
 document.addEventListener('mousemove', onMove);
 document.addEventListener('touchstart', onMove);
