@@ -161,13 +161,27 @@ https://devcode.la/tutoriales/unidades-vh-vw-css/
   var newOffset ;
   var parentHeight;
   var parentWidth;
+  var bounce=0;
+  var mode=false;
   let bee = document.getElementById('content');
  
 setInterval(animation, 50);
 function animation(){
   console.log(degrees);
   parentWidth=document.getElementById('wingsparent').offsetWidth;
-  degrees=degrees+20;
+  degrees=degrees+24;
+  if (mode){
+  bounce=bounce+1;
+  if (bounce>2){
+    mode=false;
+  }
+  }else{
+  bounce=bounce-1;
+  
+  if (bounce<0){
+    mode=true;
+  }
+  }
   radians= degrees*Math.PI/180;
   newHeight = parentWidth*Math.tan(radians);
   newOffset = newHeight / 2;
@@ -175,6 +189,7 @@ function animation(){
   document.getElementById('leftwing').style.transform= 'skew('+degrees+'deg)';
   
   document.getElementById('rightwing').style.transform= 'skew(-'+degrees+'deg)';
+  bee.style.marginTop=bounce+'vw';
 }
 offsetW=bee.offsetWidth/2;
 offsetH=bee.offsetHeight/2;
