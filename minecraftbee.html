@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<body style='background-color: grey; overflow:;'>
+<body style='background-color: grey; overflow:hidden;'>
   <div style='height:100%; width:100% ;'>
     <div style='height:100%;display: -webkit-box;
     -webkit-box-pack: center;
@@ -168,27 +168,24 @@ https://devcode.la/tutoriales/unidades-vh-vw-css/
 setInterval(animation, 50);
 function animation(){
   parentWidth=document.getElementById('wingsparent').offsetWidth;
-  
   if (mode){
-  bounce=bounce+1;
-  degrees=degrees-24;
-  console.log(degrees)
-  if (bounce>2){
-    mode=false;
-  }
+    bounce=bounce+1;
+    degrees=degrees-24;
+    if (bounce>2){
+      mode=false;
+    }
   }else{
-  bounce=bounce-1;
-  degrees=degrees+24;
-  if (bounce<0){
-    mode=true;
+    bounce=bounce-1;
+    degrees=degrees+24;
+    if (bounce<0){
+      mode=true;
+    }
   }
-  }
-  radians= degrees*Math.PI/180;
-  newHeight = parentWidth*Math.tan(radians);
-  newOffset = newHeight / 2;
-  parentHeight = parentHeight - newHeight;
+  //radians= degrees*Math.PI/180;
+  //newHeight = parentWidth*Math.tan(radians);
+  //newOffset = newHeight / 2;
+  //parentHeight = parentHeight - newHeight;
   document.getElementById('leftwing').style.transform= 'skew('+degrees+'deg)';
-  
   document.getElementById('rightwing').style.transform= 'skew(-'+degrees+'deg)';
   bee.style.marginTop=bounce+'vw';
 }
